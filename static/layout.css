@@ -1,0 +1,152 @@
+/* Basic CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Global Styles */
+body {
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(135deg, #00e599, #4dffde);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+.post {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.posts {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+.post {
+  padding: 1rem;
+}
+
+.post-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 1.5rem;
+}
+
+.post-user {
+  font-size: 0.9rem;
+  color: #8d9195;
+}
+
+.post-content {
+  margin-bottom: 1rem;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.post-form {
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.post-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  height: 200px;
+}
+
+.post-form input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.post-form button {
+  display: block;
+  margin: 0 auto;
+}

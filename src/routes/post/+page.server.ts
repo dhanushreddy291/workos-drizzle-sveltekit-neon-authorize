@@ -14,7 +14,9 @@ export async function load({ cookies }) {
 export const actions = {
   default: async ({ cookies, request }) => {
     const data = await request.formData();
-    if (!data.get("title") || !data.get("content")) {
+    const content = data.get("content")?.toString();
+    const title = data.get("title")?.toString();
+    if (!title || !content) {
       return {
         status: 400,
         body: {
@@ -28,18 +30,12 @@ export const actions = {
     const sessionData = cookies.get("wos-session") as string;
 
     const jwt = await getJWT(sessionData);
-
-    console.log(jwt);
-
     const db = getDb("auth", jwt);
 
     const res = await db.insert(posts).values({
-      content: data.get("content"),
-      title: data.get("title"),
+      content,
+      title,
     });
-
-    console.log(res);
-
     throw redirect(303, "/");
   },
 };

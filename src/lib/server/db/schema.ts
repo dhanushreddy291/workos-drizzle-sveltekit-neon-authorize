@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, pgPolicy } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, pgPolicy } from "drizzle-orm/pg-core";
 import {
   authenticatedRole,
   anonymousRole,
@@ -31,7 +31,7 @@ import {
 export const posts = pgTable(
   "posts",
   {
-    id: text("id").primaryKey(),
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
     title: text("title").notNull(),
     content: text("content").notNull(),
     userId: text("user_id")

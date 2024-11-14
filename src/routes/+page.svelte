@@ -1,7 +1,17 @@
+<script>
+  const { data } = $props();
 
-<h1>Welcome to SvelteKit</h1>
-<p>
-  Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the
-  documentation
-</p>
-<a href="/post">Post</a>
+  const { posts } = data;
+</script>
+
+<ol class="posts">
+  {#each posts as post}
+    <li class="post">
+      <p class="post-head">
+        <span class="post-title">{post.title}</span>
+        <span class="post-user">{post.userId}</span>
+      </p>
+      <p class="post-content">{post.content}</p>
+    </li>
+  {/each}
+</ol>

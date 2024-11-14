@@ -35,7 +35,6 @@ export async function load({ url, cookies }) {
     // Redirect the user to the homepage
     return redirect(307, "/");
   } catch (error) {
-    console.error("Error authenticating with WorkOS", error);
     return redirect(307, "/");
   }
 }

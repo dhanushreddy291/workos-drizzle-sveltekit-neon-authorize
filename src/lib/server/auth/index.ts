@@ -39,17 +39,33 @@ export const getJWT = async (sessionData: string) => {
     sessionData,
     cookiePassword: WORKOS_COOKIE_PASSWORD,
   });
+  let jwt;
 
   if (!session) {
     throw new Error("No session found for the provided session data");
   }
 
-  // @ts-ignore – we need the JWT, please give it to us WorkOS 🥺
-  const jwt = await session.ironSessionProvider.unsealData(sessionData, {
-    password: WORKOS_COOKIE_PASSWORD,
-  });
+  const authSession = await session.authenticate();
 
-  return jwt.accessToken;
+  if (!authSession.authenticated) {
+    const refreshed = await session.refresh();
+
+    if (!refreshed.authenticated || !refreshed.session) {
+      // redirect to login
+
+      throw new Error("Failed to refresh session");
+    }
+
+    jwt = refreshed.session.accessToken;
+  } else {
+    // @ts-ignore – we need the JWT, please give it to us WorkOS 🥺
+    const unsealed = await session.ironSessionProvider.unsealData(sessionData, {
+      password: WORKOS_COOKIE_PASSWORD,
+    });
+    jwt = unsealed.accessToken;
+  }
+
+  return jwt;
 };
 
 export { workos };
