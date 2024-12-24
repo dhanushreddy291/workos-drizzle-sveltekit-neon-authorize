@@ -3,6 +3,7 @@ import {
   WORKOS_API_KEY,
   WORKOS_CLIENT_ID,
   WORKOS_COOKIE_PASSWORD,
+  URL
 } from "$env/static/private";
 
 const workos = new WorkOS(WORKOS_API_KEY, {
@@ -12,7 +13,8 @@ const workos = new WorkOS(WORKOS_API_KEY, {
 export const getAuthURL = () => {
   const authorizationUrl = workos.userManagement.getAuthorizationUrl({
     provider: "authkit",
-    redirectUri: "http://localhost:5173/callback",
+    // URL is automatically set to the current deployment URL on Netlify
+    redirectUri: URL ? `${URL}/callback` : "http://localhost:5173/callback",
     clientId: WORKOS_CLIENT_ID,
   });
 

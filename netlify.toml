@@ -1,0 +1,30 @@
+[build]
+  command = "export NODE_ENV=development && npm install && export NODE_ENV=production && npm run build"
+  publish = ".svelte-kit/output/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Explicitly disable telemetry
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Production context
+[context.production.environment]
+  NODE_ENV = "production"
+
+# Deploy preview context
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+# Branch deploy context
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+
+# Template environment variables for the Netlify UI
+[template.environment]
+  DATABASE_URL = "Required: NeonDB owner role connection string"
+  DATABASE_AUTHENTICATED_URL = "Required: NeonDB authenticated role connection string"
+  DATABASE_ANONYMOUS_URL = "Required: NeonDB anonymous role connection string"
+  WORKOS_API_KEY = "Required: WorkOS API Key"
+  WORKOS_CLIENT_ID = "Required: WorkOS Client ID"
+  WORKOS_JWKS_URL = "Required: WorkOS JWKS URL (format: https://api.workos.com/sso/jwks/{client_id})"
+  WORKOS_COOKIE_PASSWORD = "Required: Secure password for WorkOS session cookie"
