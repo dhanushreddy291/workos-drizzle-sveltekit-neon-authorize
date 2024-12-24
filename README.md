@@ -22,7 +22,7 @@ A quick start SvelteKit template demonstrating user authentication and authoriza
 
 Deploy this example to Netlify with a single click:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/dhanushreddy291/workos-drizzle-sveltekit-neon-authorize)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-authorize)
 
 > **Important**: After deploying, ensure your WorkOS Redirect URI is set to your deployment URL (e.g., `https://your-app-name.netlify.app/callback`) in your WorkOS Application settings.
 
@@ -53,7 +53,7 @@ Deploy this example to Netlify with a single click:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/dhanushreddy291/workos-drizzle-sveltekit-neon-authorize
+   git clone https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-authorize
    cd workos-drizzle-sveltekit-neon-authorize
    ```
 
