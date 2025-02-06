@@ -1,14 +1,14 @@
 <img width="250px" src="https://neon.tech/brand/neon-logo-dark-color.svg" />
 
-# Neon Authorize + WorkOS Example (SvelteKit)
+# Neon RLS Authorize + WorkOS Example (SvelteKit)
 
-A quick start SvelteKit template demonstrating user authentication and authorization using Neon Authorize with WorkOS integration. This example showcases how to use WorkOS for authentication and Neon Authorize for securing your database with Row Level Security (RLS).
+A quick start SvelteKit template demonstrating user authentication and authorization using Neon RLS Authorize with WorkOS integration. This example showcases how to use WorkOS for authentication and Neon RLS Authorize for securing your database with Row Level Security (RLS).
 
 ## Features
 
 - SvelteKit application with TypeScript
 - User authentication powered by WorkOS
-- Row-level security using Neon Authorize
+- Row-level security using Neon RLS Authorize
 - Database migrations with Drizzle ORM
 - Ready-to-deploy configuration for Netlify
 
@@ -38,9 +38,9 @@ Deploy this example to Netlify with a single click:
 
 ![WorkOS AuthKit Connection](/images/workos-authkit-connection.png)
 
-### 2. Set Up Neon Authorize
+### 2. Set Up Neon RLS Authorize
 
-1. Open your Neon Console and click "Authorize".
+1. Open your Neon Console and click "RLS Authorize" in your project's settings.
 2. Add a new authentication provider.
 3. Set the JWKS URL to: `{YOUR_WORKOS_URL}/.well-known/jwks.json`
 
@@ -53,8 +53,8 @@ Deploy this example to Netlify with a single click:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-authorize
-   cd workos-drizzle-sveltekit-neon-authorize
+   git clone https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-rls-authorize
+   cd workos-drizzle-sveltekit-neon-rls-authorize
    ```
 
 2. Install dependencies:
@@ -104,7 +104,7 @@ Deploy this example to Netlify with a single click:
 
 ## Important: Production Setup
 
-Update your WorkOS environment to production and the JWKS URL in Neon Authorize accordingly.
+Update your WorkOS environment to production and the JWKS URL in Neon RLS Authorize accordingly.
 
 ![Change Environment to Production](/images/workos-environment.png)
 
@@ -112,7 +112,7 @@ Update your WorkOS environment to production and the JWKS URL in Neon Authorize 
 
 ## Learn More
 
-- [Neon Authorize Tutorial](https://neon.tech/docs/guides/neon-authorize-tutorial)
+- [Neon RLS Authorize Tutorial](https://neon.tech/docs/guides/neon-authorize-tutorial)
 - [Simplify RLS with Drizzle](https://neon.tech/docs/guides/neon-authorize-drizzle)
 - [WorkOS Documentation](https://workos.com/docs)
 
