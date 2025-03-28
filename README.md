@@ -1,14 +1,14 @@
 <img width="250px" src="https://neon.tech/brand/neon-logo-dark-color.svg" />
 
-# Neon RLS Authorize + WorkOS Example (SvelteKit)
+# Neon RLS + WorkOS Example (SvelteKit)
 
-A quick start SvelteKit template demonstrating user authentication and authorization using Neon RLS Authorize with WorkOS integration. This example showcases how to use WorkOS for authentication and Neon RLS Authorize for securing your database with Row Level Security (RLS).
+A quick start SvelteKit template demonstrating user authentication and authorization using Neon RLS with WorkOS integration. This example showcases how to use WorkOS for authentication and Neon RLS for securing your database with Row Level Security (RLS).
 
 ## Features
 
 - SvelteKit application with TypeScript
 - User authentication powered by WorkOS
-- Row-level security using Neon RLS Authorize
+- Row-level security using Neon RLS
 - Database migrations with Drizzle ORM
 - Ready-to-deploy configuration for Netlify
 
@@ -22,39 +22,44 @@ A quick start SvelteKit template demonstrating user authentication and authoriza
 
 Deploy this example to Netlify with a single click:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-authorize)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-rls)
 
-> **Important**: After deploying, ensure your WorkOS Redirect URI is set to your deployment URL (e.g., `https://your-app-name.netlify.app/callback`) in your WorkOS Application settings.
+   > **Important**: After deploying, ensure your WorkOS Redirect URI is set to your deployment URL (e.g., `https://your-app-name.netlify.app/callback`) in your WorkOS Application settings.
 
-![Set Redirect URI in WorkOS](/images/workos-redirect-uri.png)
+   ![Set Redirect URI in WorkOS](/images/workos-redirect-uri.png)
 
 ## Local Development Setup
 
-### 1. Configure WorkOS
+### Configure WorkOS
 
 1. Navigate to your WorkOS dashboard and create an AuthKit connection.
 2. Configure the **Redirect URI** to `http://localhost:5173/callback`.
 3. Copy the **Client ID** and **API Key** for the next steps.
 
-![WorkOS AuthKit Connection](/images/workos-authkit-connection.png)
+   ![WorkOS AuthKit Connection](/images/workos-authkit-connection.png)
 
-### 2. Set Up Neon RLS Authorize
+### Set Up Neon RLS
 
-1. Open your Neon Console and click "RLS Authorize" in your project's settings.
+1. Open your Neon Console and click "RLS" in your project's settings.
 2. Add a new authentication provider.
 3. Set the JWKS URL to: `{YOUR_WORKOS_URL}/.well-known/jwks.json`
 
    > Replace `{YOUR_WORKOS_URL}` with your WorkOS domain (e.g., `https://api.workos.com/sso/jwks/{YOUR_CLIENT_ID}`). You can find the exact format in your `.env.example` as `WORKOS_JWKS_URL`.
 
-   ![Add WorkOS JWKS URL](/images/neon-authorize-workos-jwks.png)
+   ![Add WorkOS JWKS URL](/images/neon-rls-workos-jwks.png)
 
-### 3. Local Installation
+4. Follow the steps in the UI to setup the roles for Neon RLS. You should ignore the schema related steps if you're following this guide.
+5. Note down the connection strings for both the **`neondb_owner` role** and the **`authenticated, passwordless` role**. You'll need both. The `neondb_owner` role has full privileges and is used for migrations, while the `authenticated` role will be used by the application and will have its access restricted by RLS.
+   
+   ![Neon RLS Connection Strings](/images/neon-rls-env-values.png)
+
+### Local Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-rls-authorize
-   cd workos-drizzle-sveltekit-neon-rls-authorize
+   git clone https://github.com/neondatabase-labs/workos-drizzle-sveltekit-neon-rls
+   cd workos-drizzle-sveltekit-neon-rls
    ```
 
 2. Install dependencies:
@@ -100,20 +105,20 @@ Deploy this example to Netlify with a single click:
 
 6. Visit `http://localhost:5173` to see the application running.
 
-![SvelteKit App](/images/sveltekit-app.png)
+   ![SvelteKit App](/images/sveltekit-app.png)
 
 ## Important: Production Setup
 
-Update your WorkOS environment to production and the JWKS URL in Neon RLS Authorize accordingly.
+Update your WorkOS environment to production and the JWKS URL in Neon RLS accordingly.
 
-![Change Environment to Production](/images/workos-environment.png)
+   ![Change Environment to Production](/images/workos-environment.png)
 
-> **Note**: Before deploying to production, ensure you have configured the correct Redirect URI in your WorkOS Application settings to match your deployed application's URL (e.g., `https://your-app-name.netlify.app/callback`).
+   > **Note**: Before deploying to production, ensure you have configured the correct Redirect URI in your WorkOS Application settings to match your deployed application's URL (e.g., `https://your-app-name.netlify.app/callback`).
 
 ## Learn More
 
-- [Neon RLS Authorize Tutorial](https://neon.tech/docs/guides/neon-authorize-tutorial)
-- [Simplify RLS with Drizzle](https://neon.tech/docs/guides/neon-authorize-drizzle)
+- [Neon RLS Tutorial](https://neon.tech/docs/guides/neon-rls-tutorial)
+- [Simplify RLS with Drizzle](https://neon.tech/docs/guides/neon-rls-drizzle)
 - [WorkOS Documentation](https://workos.com/docs)
 
 ## Authors
